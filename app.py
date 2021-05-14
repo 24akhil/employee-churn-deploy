@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 #import numpy as np
+import os
 import pandas as pd
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 import joblib
 import pickle
 
@@ -15,7 +16,11 @@ model = joblib.load("Emp_attrition_prediction.pkl")
 
 df = pd.DataFrame()
 
-@app.route('/')
+@app.route('/favicon.ico') 
+def favicon(): 
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+@app.route('/',methods=['GET'])
 def home():
     return render_template('index.html')
 
@@ -364,5 +369,5 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    #app.run(host='0.0.0.0', port=8082)    
+    #app.run(debug=True)
+    app.run(host='0.0.0.0', port=8082)    
