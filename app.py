@@ -17,15 +17,15 @@ model = joblib.load("Emp_attrition_prediction.pkl")
 df = pd.DataFrame()
 
 @app.route('/favicon.ico') 
-def favicon(): 
+def Favicon(): 
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/',methods=['GET'])
-def home():
+def Home():
     return render_template('index.html')
 
 @app.route('/predict',methods=['POST'])
-def predict():
+def Predict():
     global df
     
     #input_features = [int(x) for x in request.form.values()]
