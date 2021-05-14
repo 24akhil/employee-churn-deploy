@@ -2,7 +2,7 @@
 
 #import numpy as np
 import os
-import pandas as pd
+#import pandas as pd
 from flask import Flask, request, render_template, send_from_directory
 import joblib
 import pickle
@@ -14,7 +14,7 @@ model = joblib.load("Emp_attrition_prediction.pkl")
 
 
 
-df = pd.DataFrame()
+#df = pd.DataFrame()
 
 @app.route('/favicon.ico') 
 def Favicon(): 
@@ -26,7 +26,7 @@ def Home():
 
 @app.route('/predict',methods=['POST'])
 def Predict():
-    global df
+    #global df
     
     #input_features = [int(x) for x in request.form.values()]
     print(request.form)
@@ -369,5 +369,5 @@ def Predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
-    #app.run(host='0.0.0.0', port=8082)    
+    #app.run(debug=False)
+    app.run(host='0.0.0.0', port=80)    
