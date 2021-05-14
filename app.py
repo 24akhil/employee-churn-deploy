@@ -17,7 +17,7 @@ df = pd.DataFrame()
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -360,9 +360,9 @@ def predict():
     else:
         pred ='Employee may stay for longer association.'    
     
-    return render_template('home.html', prediction_text='{}'.format(pred))
+    return render_template('index.html', prediction_text='{}'.format(pred))
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
+    #app.run(host='0.0.0.0', port=8082)    
